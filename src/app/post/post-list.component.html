@@ -1,0 +1,41 @@
+<p>
+  post-list works!
+</p>
+
+<table>
+  <tr>
+    <th class = "table_val">Id</th>
+    <th class = "table_val">userId</th>
+    <th class = "table_val">title</th>
+    <th class = "table_val">body</th>
+    <th class = "table_val">view comment</th>
+  </tr>
+  <tr *ngFor = 'let post of posts;'>
+    <th>{{ post.id }}</th>
+    <th>{{ post.userId }}</th>
+    <th>{{ post.title }}</th>
+    <th>{{ post.body }}</th>
+    <th><button #button (click)="logComments(post.id)">view comments</button></th>
+  </tr>
+  <!-- </div> -->
+
+</table>
+
+
+<table>
+  <tr>
+    <th class = "table_val">Id</th>
+    <!-- <th class = "table_val">userId</th>
+    <th class = "table_val">title</th>
+    <th class = "table_val">body</th> -->
+    <th class = "table_val">comment</th>
+  </tr>
+  <tr *ngFor = 'let post of posts2;'>
+    <th>{{ post.postId }}</th>
+    <!-- <th>{{ post.userId }}</th>
+    <th>{{ post.title }}</th> -->
+    <th>{{ post.body }}</th>
+  </tr>
+  <!-- </div> -->
+
+</table>

@@ -1,6 +1,9 @@
-import { Component, OnInit, ViewChild, ViewChildren, ElementRef, QueryList, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewChildren, ElementRef, QueryList, AfterViewInit, OnDestroy } from '@angular/core';
 import { Product } from '../shared/models/product';
 import { ProductComponent } from './product.component';
+import { AddProductComponent } from './add-product.component';
+import { interval, Observable, Subscription } from 'rxjs';
+import { takeWhile, filter } from 'rxjs/operators'
 
 
 @Component({
@@ -8,21 +11,36 @@ import { ProductComponent } from './product.component';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent implements OnInit, AfterViewInit {
+export class ProductListComponent implements OnInit, AfterViewInit, OnDestroy {
 
   productList: Array<Product> = [];
-  @ViewChild('p1')
+  counter: any;
+  timer$: Observable<number>;
+  subscribe: Subscription;
+  // @ViewChild('p1')
   private productComponent: ProductComponent;
 
-  @ViewChildren(ProductComponent) prodList: QueryList<ProductComponent>;
+ 
+  private addComponent: AddProductComponent;
+  @ViewChildren(AddProductComponent) prod: AddProductComponent;
+  isComplete: any;
+  // @ViewChildren(ProductComponent) prodList: QueryList<ProductComponent>;
+  // @ViewChildren(ProductComponent) prod: Product;
   // @ViewChild('txtBox')
   // private textBox: ElementRef;
   
   constructor() { }
 
   ngOnInit() {
-    this.productList = [new Product(1, 'notebook'), new Product(2, 'pen'),
-    new Product(3, 'pencil'), new Product(4, 'eraser')];
+    this.productList = [new Product(1, 'notebook', 'good good good good good good'), new Product(2, 'pen', 'bad bad bad bad bad bad bad'),
+    new Product(3, 'pencil', 'ok ok ok ok ok ok ok okokokok'), new Product(4, 'eraser','just so so 12345678910111213141516171819')];
+
+    const source = interval(1000);
+    this.subscribe = source.pipe(filter(val => val%2 === 0),
+    takeWhile(() => this.isComplete)).subscribe(val =>  {
+      console.log(val);
+      this.counter = val;
+    }, () => {}, () => console.log('completed!') );
 
   }
 
@@ -31,11 +49,26 @@ export class ProductListComponent implements OnInit, AfterViewInit {
     // Add 'implements AfterViewInit' to the class.
     // console.log(this.productComponent.product);
     // console.log(this.textBox.nativeElement.value);
-    this.prodList.forEach(prod => console.log(prod.product));
+    console.log(this.prod.name);
+    // this.prodList.forEach(prod => console.log(prod.product));
+    
   }
 
   logPickedProduct(product: Product) {
+    console.log("run");
     console.log(product);
+  }
+
+  logSubmit(product: Product) {
+    console.log("test");
+    console.log(product);
+    this.productList.push(product);
+    
+  }
+
+  ngOnDestroy() {
+    this.isComplete = false;
+    this.subscribe.unsubscribe();
   }
 
 }

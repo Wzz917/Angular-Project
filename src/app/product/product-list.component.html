@@ -5,6 +5,10 @@
 <input appColorChanger #txtBox type="text" />
 
 <div>
+  <app-add-product  (addclicked)='logSubmit($event)'></app-add-product>
+</div>
+
+<div>
   <app-product *ngFor='let product of productList' 
   [product]='product' (clicked)='logPickedProduct($event)'></app-product>
 </div>

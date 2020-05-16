@@ -6,8 +6,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class BoosterPipe implements PipeTransform {
 
-  transform(value: number, multiplicationValue: number = 1): number {
-    return value * multiplicationValue;
+  transform(description: string): string {
+    var res = description.slice(0, 21);
+    return res;
   }
 
   //for impure pipes: avoid expensive operations: 
