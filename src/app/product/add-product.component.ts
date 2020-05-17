@@ -1,5 +1,8 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Product } from '../shared/models/product';
+import { Store } from '@ngrx/store';
+import * as ProductListActions from './store/product-list.actions';
+
 
 @Component({
   selector: 'app-add-product',
@@ -13,7 +16,11 @@ export class AddProductComponent implements OnInit {
   // p = null;
   product:Product;
   @Output() addclicked = new EventEmitter<Product>();
-  constructor() { }
+
+
+  constructor(private store : Store<{productList: {products:Product[]}}>) {
+    
+  }
 
   ngOnInit() {
   }
@@ -38,6 +45,7 @@ export class AddProductComponent implements OnInit {
     var newProduct = new Product(+this.id, this.name, this.description);
     this.product = newProduct;
     this.addclicked.emit(this.product);
+    this.store.dispatch(new ProductListActions.AddProduct(this.product));
     
   }
 }

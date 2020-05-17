@@ -1,5 +1,9 @@
 # Demoapp
 
+The project is built to learn Angular step by step. The project contains small pieces of code such as components, directives, service, routing, NGRX(reducer, action , state) and so on. 
+
+For NGRX part, reducer.ts and action.ts have been implemented for product-list component. Store module also has been added to app.module.ts which is the only store of the entire application. The action such as AddProduct automatically reaches all the reducers that store knows. In this case, the store only contains production-list reducer.  
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
 
 ## Development server
