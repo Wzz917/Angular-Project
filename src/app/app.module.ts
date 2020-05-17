@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { StoreModule } from "@ngrx/store";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +12,9 @@ import { BoosterPipe } from './shared/pipes/booster.pipe';
 import { ColorChangerDirective } from './shared/directives/color-changer.directive';
 import { AddProductComponent } from './product/add-product.component';
 import { PostListComponent } from './post/post-list.component';
+import { UserTemplateDrivenComponent } from './user/user-template-driven.component';
+import { UserReactiveComponent } from './user/user-reactive.component';
+import { productListReducer } from './product/store/product-list.reducer';
 
 @NgModule({
   declarations: [
@@ -19,13 +24,18 @@ import { PostListComponent } from './post/post-list.component';
     BoosterPipe,
     ColorChangerDirective,
     AddProductComponent,
-    PostListComponent
+    PostListComponent,
+    UserTemplateDrivenComponent,
+    UserReactiveComponent
   ],
   exports: [],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    StoreModule.forRoot({productList: productListReducer})
   ],
   providers: [],
   bootstrap: [AppComponent]

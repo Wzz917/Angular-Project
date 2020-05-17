@@ -4,6 +4,7 @@ import { ProductComponent } from './product.component';
 import { AddProductComponent } from './add-product.component';
 import { interval, Observable, Subscription } from 'rxjs';
 import { takeWhile, filter } from 'rxjs/operators'
+import { Store } from '@ngrx/store';
 
 
 @Component({
@@ -17,6 +18,7 @@ export class ProductListComponent implements OnInit, AfterViewInit, OnDestroy {
   counter: any;
   timer$: Observable<number>;
   subscribe: Subscription;
+  products: Observable<{products: Product[]}>;
   // @ViewChild('p1')
   private productComponent: ProductComponent;
 
@@ -29,9 +31,11 @@ export class ProductListComponent implements OnInit, AfterViewInit, OnDestroy {
   // @ViewChild('txtBox')
   // private textBox: ElementRef;
   
-  constructor() { }
+  constructor(private store: Store<{productList: {products:Product[]}}>) { }
 
   ngOnInit() {
+    this.products = this.store.select('productList');
+
     this.productList = [new Product(1, 'notebook', 'good good good good good good'), new Product(2, 'pen', 'bad bad bad bad bad bad bad'),
     new Product(3, 'pencil', 'ok ok ok ok ok ok ok okokokok'), new Product(4, 'eraser','just so so 12345678910111213141516171819')];
 

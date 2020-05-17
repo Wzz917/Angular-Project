@@ -1,0 +1,38 @@
+<p>
+  user-reactive works!
+</p>
+
+
+<div>
+
+  <form [formGroup] = "userForm" (ngSubmit)="saveUser()">
+    <div>
+      <label for = "firstName">First Name: </label>
+      <input type = "text" id="firstName" name="firstName" formControlName="firstName">
+      
+      
+    </div> 
+
+    <div>
+      <label for = "lastName">Last Name: </label>
+      <input type = "text" id="lastName" name="lastName" formControlName="lastName">
+    </div>
+
+    <div>
+      <label for = "phone">Phone: </label>
+      <input type = "text" id="phone" name="phone" formControlName="phone">
+    </div>
+
+    <div>
+      <label for="email">Email: </label>
+      <input type= "text" id="email" name="email" formControlName="email">
+    </div>
+
+    <div>
+      <input type="submit" name="submit">
+    </div>
+    
+  </form>
+
+  {{ userForm.status }}
+</div>

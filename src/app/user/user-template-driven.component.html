@@ -1,0 +1,41 @@
+<p>
+  user-template-driven works!
+</p>
+
+
+<div>
+
+  <form (ngSubmit)="saveUser()" #userform="ngForm">
+    <div>
+      <label for = "firstName">First Name: </label>
+      <input type = "text" id="firstName" name="firstName" [(ngModel)]="user.firstName" #firstName="ngModel">
+      <div [hidden]="firstName.touched">
+        First name is required.
+      </div>
+    </div> 
+
+    <div>
+      <label for = "lastName">Last Name: </label>
+      <input type = "text" id="lastName" name="lastName" [(ngModel)]="user.lastName">
+    </div>
+
+    <div>
+      <label for = "phone">Phone: </label>
+      <input type = "text" id="phone" name="phone" [(ngModel)]="user.phone">
+    </div>
+
+    <div>
+      <label for="email">Email: </label>
+      <input type= "text" id="email" name="email" [(ngModel)]="user.email">
+    </div>
+
+    <div>
+      <input type="submit" name="submit" >
+    </div>
+    
+  </form>
+
+  {{ user | json }}
+
+  {{ userform.status }}
+</div>

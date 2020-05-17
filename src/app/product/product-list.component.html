@@ -12,6 +12,11 @@
   <app-product *ngFor='let product of productList' 
   [product]='product' (clicked)='logPickedProduct($event)'></app-product>
 </div>
+
+
+<div *ngFor = 'let product of (products | async).products'>
+  Name: {{product.name}}  Description: {{product.description}}
+</div>
 <!-- 
 <app-product #p1 [product] = 'this.productList[2]'></app-product> -->
 
