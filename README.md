@@ -32,6 +32,8 @@ Created shopping-list.service.ts and recipe.service.ts to manage shopping list a
 Passed the recipe object from recipe-item component directly to recipe component.
 Passed the ingredient object array from shopping-edit component to shopping-list compoent to update the ingredient objects array.
 
+Made recipe.service.ts injectable. Shopping-list service was injected into recipe service (we can use shopping-list service inside recipe service). So we can add the ingredients in the recipe component to the shopping list directly.
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.6.
 
