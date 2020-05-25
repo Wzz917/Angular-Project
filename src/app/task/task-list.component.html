@@ -1,0 +1,10 @@
+
+
+<div>
+  <input type="text" name = "taskinput" [(ngModel)]="name" (input)="onInput($event.target.value)">
+  <input type="submit" (click)="onClick()">
+</div>
+
+<ul>
+  <li *ngFor="let task of tasks">{{ task.id+' => '+task.name }}<button (click)="onRemove(task.id)">remove</button></li>
+</ul>

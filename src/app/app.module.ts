@@ -15,6 +15,7 @@ import { PostListComponent } from './post/post-list.component';
 import { UserTemplateDrivenComponent } from './user/user-template-driven.component';
 import { UserReactiveComponent } from './user/user-reactive.component';
 import { productListReducer } from './product/store/product-list.reducer';
+import { TaskListComponent } from './task/task-list.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { productListReducer } from './product/store/product-list.reducer';
     AddProductComponent,
     PostListComponent,
     UserTemplateDrivenComponent,
-    UserReactiveComponent
+    UserReactiveComponent,
+    TaskListComponent
   ],
   exports: [],
   imports: [
