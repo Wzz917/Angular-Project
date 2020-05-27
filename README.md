@@ -35,6 +35,26 @@ Passed the ingredient object array from shopping-edit component to shopping-list
 Made recipe.service.ts injectable. Shopping-list service was injected into recipe service (we can use shopping-list service inside recipe service). So we can add the ingredients in the recipe component to the shopping list directly.
 
 
+## Project-Routing
+Created routing between pages. 
+Created routing relationship using the header between shopping list page and recipe page.
+Created a recipe-start component as child of recipe component.
+Modified recipe-detail component as a routing child of recipe component to display recipe detail section using routing. Each recipe detail component has an id which is the index of the recipe in the array. The id is set to params id value. So that the url has been set up.
+In recipe-item component, we added a routerlink with index to the item so that the page can be routed to recipe detail. The index was received from recipe-list component.
+
+In recipe-list component, got new recipe button working using router.navigate. In recipe-detail component, got edit recipe button working using router.navigate.
+
+
+## Project-Observables
+Replaced event emitter in two services with subject. Replaced emit() with next().
+Subject is more active. We can actively call next() from outside.
+
+## Project-FormControl
+Replaced the form in the shopping-edit component with template-driven form using ngSubmit, ngForm, ngModel.
+
+
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.6.
 
 ## Development server
