@@ -51,7 +51,9 @@ Subject is more active. We can actively call next() from outside.
 
 ## Project-FormControl
 Replaced the form in the shopping-edit component with template-driven form using ngSubmit, ngForm, ngModel.
-
+Created shopping list update, delete and clear button functionalities by modifing shoppingListService code.
+Implemented all the buttons in recipe-edit and recipe-detail component including new recipe, edit recipe, delete recipe, save, cancel, add ingredient and so on.
+For new recipe and edit recipe buttons, reactive form module was mainly used.
 
 
 
