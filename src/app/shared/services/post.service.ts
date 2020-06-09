@@ -16,13 +16,13 @@ export class PostService {
   }
 
   getPosts(): Observable<Post[]> {
-    return this.http.get(`${environment.api_url}`)
+    return this.http.get(`${environment.api_url}/posts`)
     .pipe(map(response => response as Post[]), catchError(error => throwError(new Error(error)))
     );
   }
 
   getPosts2(id:number): Observable<Post[]> {
-    return this.http.get(`${environment.api_url}/${id}/comments`)
+    return this.http.get(`${environment.api_url}/posts/${id}/comments`)
     .pipe(map(response => response as Post[]), catchError(error => throwError(new Error(error)))
     );
   }

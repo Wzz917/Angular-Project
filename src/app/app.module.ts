@@ -16,6 +16,8 @@ import { UserTemplateDrivenComponent } from './user/user-template-driven.compone
 import { UserReactiveComponent } from './user/user-reactive.component';
 import { productListReducer } from './product/store/product-list.reducer';
 import { TaskListComponent } from './task/task-list.component';
+import { HttpComponent } from './http/http.component';
+import { HttpService } from './http/http.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { TaskListComponent } from './task/task-list.component';
     PostListComponent,
     UserTemplateDrivenComponent,
     UserReactiveComponent,
-    TaskListComponent
+    TaskListComponent,
+    HttpComponent
   ],
   exports: [],
   imports: [
@@ -39,7 +42,7 @@ import { TaskListComponent } from './task/task-list.component';
     ReactiveFormsModule,
     StoreModule.forRoot({productList: productListReducer})
   ],
-  providers: [],
+  providers: [HttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
