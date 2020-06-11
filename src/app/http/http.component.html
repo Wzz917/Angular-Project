@@ -19,7 +19,7 @@
 </form>
 
 <div>
-  <ul>
+  <ul appTest [defaultColor]="'lightgreen'" [newColor]="'lightblue'">
     <li *ngFor="let thing of things;">
       ID: {{ thing.id }}, Name: {{ thing.name }}, Description: {{ thing.description }}
     </li>

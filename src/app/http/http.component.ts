@@ -21,9 +21,7 @@ export class HttpComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     // this.things = this.httpService.returnThings();
-    this.httpService.getThings().subscribe(response => {
-      this.httpService.setThings(response);
-    })
+    this.httpService.getThings();
     this.subscription = this.httpService.thingsChanged.subscribe((things) => {
       this.things = things;
     });
@@ -33,13 +31,19 @@ export class HttpComponent implements OnInit, OnDestroy {
     console.log(form);
     this.httpService.postThings(new Thing(+form.value['id'],form.value['name'],form.value['description']))
     .subscribe(response => {
-      console.log(response);
+      console.log(response)
     })
     this.inputId = "";
     this.inputName = "";
     this.inputDescription = "";
   }
 
+  onSubmit2(form:NgForm) {
+    this.httpService.addThings(new Thing(+form.value['id'],form.value['name'],form.value['description']));
+    // this.subscription = this.httpService.thingsChanged.subscribe((things) => {
+    //   this.things = things;
+    // });
+  }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();

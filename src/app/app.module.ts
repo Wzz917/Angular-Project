@@ -18,6 +18,9 @@ import { productListReducer } from './product/store/product-list.reducer';
 import { TaskListComponent } from './task/task-list.component';
 import { HttpComponent } from './http/http.component';
 import { HttpService } from './http/http.service';
+import { HeaderComponent } from './header/header.component';
+import { TestPipe } from './shared/pipes/test.pipe';
+import { TestDirective } from './shared/directives/test.directive';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,10 @@ import { HttpService } from './http/http.service';
     UserTemplateDrivenComponent,
     UserReactiveComponent,
     TaskListComponent,
-    HttpComponent
+    HttpComponent,
+    HeaderComponent,
+    TestPipe,
+    TestDirective
   ],
   exports: [],
   imports: [

@@ -20,6 +20,11 @@ export class HttpService {
     return this.things.slice();
   }
 
+  addThings(thing:Thing) {
+    this.things.push(thing);
+    this.thingsChanged.next(this.things.slice());
+  }
+
   setThings(things:Thing[]) {
     this.things = things;
     // console.log(this.things);
@@ -31,7 +36,7 @@ export class HttpService {
   }
 
   getThings() {
-    return this.http.get<Thing[]>('https://practice-db-72213.firebaseio.com/things.json')
+    this.http.get<Thing[]>('https://practice-db-72213.firebaseio.com/things.json')
     .pipe(map(response => {
       const thingsArray = [];
       for (const key in response) {
@@ -40,7 +45,10 @@ export class HttpService {
         }
       }
       return thingsArray;
-    }));
+    })).subscribe(response => {
+      this.things = response;
+      this.thingsChanged.next(this.things.slice());
+    });
   }
 
   

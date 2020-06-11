@@ -3,11 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { PostListComponent } from './post/post-list.component';
 import { ProductListComponent } from './product/product-list.component';
 import { UserReactiveComponent } from './user/user-reactive.component';
+import { HttpComponent } from './http/http.component';
 
 const routes: Routes = [
-  {path: '', component: UserReactiveComponent},
-  {path: 'post', component: PostListComponent},
-  {path: 'product', component: ProductListComponent}
+  { path: '', redirectTo: '/things', pathMatch: 'full' },
+  {path: 'things', component: HttpComponent},
+  {path: 'posts', component: PostListComponent},
+  {path: 'products', component: ProductListComponent}
 ];
 
 @NgModule({
