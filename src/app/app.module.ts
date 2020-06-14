@@ -21,6 +21,8 @@ import { HttpService } from './http/http.service';
 import { HeaderComponent } from './header/header.component';
 import { TestPipe } from './shared/pipes/test.pipe';
 import { TestDirective } from './shared/directives/test.directive';
+import { SearchComponent } from './search/search.component';
+import { SearchService } from './search/search.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,8 @@ import { TestDirective } from './shared/directives/test.directive';
     HttpComponent,
     HeaderComponent,
     TestPipe,
-    TestDirective
+    TestDirective,
+    SearchComponent
   ],
   exports: [],
   imports: [
@@ -48,7 +51,7 @@ import { TestDirective } from './shared/directives/test.directive';
     ReactiveFormsModule,
     StoreModule.forRoot({productList: productListReducer})
   ],
-  providers: [HttpService],
+  providers: [HttpService, SearchService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

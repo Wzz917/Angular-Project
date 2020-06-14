@@ -1,0 +1,18 @@
+<div>
+  <input type="text" name="search" [(ngModel)]="searchInput"  (keyup.enter)="onSearch2()">
+  <button type="submit" (click)="onSearch()">Search</button>
+</div>
+
+<div>
+  <p *ngIf = "feedback">No Results</p>
+</div>
+
+<div>
+  <ul>
+    <li *ngFor="let album of albums">
+      Artist: {{ album.artistName }} -- 
+      Collection Name: {{ album.collectionName }} --
+      Country: {{ album.country }}
+    </li>
+  </ul>
+</div>
